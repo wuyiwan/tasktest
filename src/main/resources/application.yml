@@ -1,0 +1,15 @@
+#jdbc
+server:
+  port: 8080
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    url: jdbc:sqlite::resource:static/task
+    driver-class-name: org.sqlite.JDBC
+    username:
+    password:
+
+
+mybatis:
+  type-aliases-package: com.example.demo.pojo

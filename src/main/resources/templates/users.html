@@ -1,0 +1,240 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Management System</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #87CEEB 0%, #B0E0E6 50%, #ADD8E6 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 42px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .header hr {
+            width: 200px;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+            border: none;
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+
+        .table-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            padding: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: 15px;
+        }
+
+        th {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 18px 15px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        th:first-child {
+            border-radius: 10px 0 0 0;
+        }
+
+        th:last-child {
+            border-radius: 0 10px 0 0;
+        }
+
+        td {
+            padding: 16px 15px;
+            text-align: center;
+            border-bottom: 1px solid #ecf0f1;
+            color: #34495e;
+            font-size: 15px;
+        }
+
+        tr:last-child td:first-child {
+            border-radius: 0 0 0 10px;
+        }
+
+        tr:last-child td:last-child {
+            border-radius: 0 0 10px 0;
+        }
+
+        tr:hover td {
+            background-color: #f8f9fa;
+        }
+
+        tr:nth-child(even) td {
+            background-color: rgba(135, 206, 235, 0.1);
+        }
+
+        tr:nth-child(even):hover td {
+            background-color: rgba(135, 206, 235, 0.2);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin: 0 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-green {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+        }
+
+        .btn-green:hover {
+            background: linear-gradient(135deg, #27ae60, #1e8449);
+        }
+
+        .btn-orange {
+            background: linear-gradient(135deg, #e67e22, #d35400);
+            color: white;
+        }
+
+        .btn-orange:hover {
+            background: linear-gradient(135deg, #d35400, #a04000);
+        }
+
+        .btn-add {
+            display: block;
+            width: 180px;
+            padding: 16px 30px;
+            margin: 30px auto 0;
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+            text-align: center;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(46, 204, 113, 0.4);
+            letter-spacing: 1px;
+        }
+
+        .btn-add:hover {
+            background: linear-gradient(135deg, #27ae60, #1e8449);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(46, 204, 113, 0.5);
+        }
+
+        .btn-add:active {
+            transform: translateY(-1px);
+        }
+
+        .empty-message {
+            text-align: center;
+            padding: 60px 20px;
+            color: #7f8c8d;
+            font-size: 18px;
+        }
+
+        .level-high {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+
+        .level-medium {
+            color: #f39c12;
+            font-weight: 600;
+        }
+
+        .level-low {
+            color: #27ae60;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Task Management System</h1>
+            <hr>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Level</th>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Person in charge</th>
+                        <th>Operation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="user : ${users}">
+                        <td th:text="${user.id}"></td>
+                        <td th:text="${user.level}"></td>
+                        <td th:text="${user.description}"></td>
+                        <td th:text="${user.date}"></td>
+                        <td th:text="${user.pic}"></td>
+                        <td>
+                            <a th:href="@{'/delete/'+${user.id}}" class="btn btn-orange">delete</a>
+                            <a th:href="@{'/update/'+${user.id}}" class="btn btn-green">revise</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <a href="Add1" class="btn-add">+ Add Task</a>
+        </div>
+    </div>
+</body>
+</html>

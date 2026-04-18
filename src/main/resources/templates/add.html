@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${user != null and user.id != null} ? 'Edit Task' : 'Add Task'">Add Task</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #87CEEB 0%, #B0E0E6 50%, #ADD8E6 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .form-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .form-header h2 {
+            color: #2c3e50;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .form-header hr {
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+            border: none;
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #34495e;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            padding-left: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 18px;
+            font-size: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            background-color: #fafafa;
+            color: #34495e;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #3498db;
+            background-color: white;
+            box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: #95a5a6;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 16px 30px;
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(46, 204, 113, 0.4);
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            background: linear-gradient(135deg, #27ae60, #1e8449);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(46, 204, 113, 0.5);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        .btn-back {
+            display: block;
+            width: 100%;
+            padding: 14px 30px;
+            background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            text-decoration: none;
+            margin-top: 15px;
+        }
+
+        .btn-back:hover {
+            background: linear-gradient(135deg, #7f8c8d, #6c7a7b);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-back:active {
+            transform: translateY(0);
+        }
+
+        .form-group .label-required::after {
+            content: ' *';
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-card">
+            <div class="form-header">
+                <h2 th:text="${user != null and user.id != null} ? 'Edit Task' : 'Add New Task'">Add New Task</h2>
+                <hr>
+            </div>
+
+            <form action="AddUser" method="post" th:object="${user}">
+                <div class="form-group">
+                    <label class="label-required" for="id">Task ID</label>
+                    <input type="text" id="id" name="id" th:field="*{id}" placeholder="Enter task ID" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="label-required" for="level">Level</label>
+                        <input type="text" id="level" name="level" th:field="*{level}" placeholder="e.g., High, Medium, Low" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="label-required" for="date">Date</label>
+                        <input type="text" id="date" name="date" th:field="*{date}" placeholder="e.g., 2024-01-15" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="label-required" for="description">Description</label>
+                    <input type="text" id="description" name="description" th:field="*{description}" placeholder="Enter task description" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="label-required" for="pic">Person in Charge</label>
+                    <input type="text" id="pic" name="pic" th:field="*{pic}" placeholder="Enter responsible person" required>
+                </div>
+
+                <button type="submit" class="btn-submit">Submit</button>
+            </form>
+
+            <a href="/users" class="btn-back">Back to Task List</a>
+        </div>
+    </div>
+</body>
+</html>
