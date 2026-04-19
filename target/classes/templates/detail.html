@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Detail</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #87CEEB 0%, #B0E0E6 50%, #ADD8E6 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+        }
+
+        .detail-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+        }
+
+        .detail-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .detail-header h2 {
+            color: #2c3e50;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .detail-header hr {
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+            border: none;
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        .task-id-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .info-section {
+            margin-bottom: 25px;
+        }
+
+        .info-label {
+            color: #7f8c8d;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .info-value {
+            color: #2c3e50;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .info-row {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .info-row .info-section {
+            flex: 1;
+            margin-bottom: 0;
+        }
+
+        .level-high {
+            color: #e74c3c;
+        }
+
+        .level-medium {
+            color: #f39c12;
+        }
+
+        .level-low {
+            color: #27ae60;
+        }
+
+        .image-section {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .task-image {
+            max-width: 100%;
+            max-height: 400px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .no-image {
+            background: linear-gradient(135deg, #ecf0f1, #bdc3c7);
+            padding: 60px 20px;
+            border-radius: 12px;
+            color: #7f8c8d;
+            font-size: 16px;
+        }
+
+        .description-section {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #3498db;
+        }
+
+        .description-section .info-label {
+            margin-bottom: 12px;
+        }
+
+        .description-section .info-value {
+            line-height: 1.8;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .btn-close {
+            display: block;
+            width: 100%;
+            padding: 16px 30px;
+            background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            letter-spacing: 1px;
+            margin-top: 30px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-close:hover {
+            background: linear-gradient(135deg, #7f8c8d, #6c7a7b);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-close:active {
+            transform: translateY(0);
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #e0e0e0, transparent);
+            margin: 25px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="detail-card">
+            <div class="detail-header">
+                <h2>Task Detail</h2>
+                <hr>
+            </div>
+
+            <div th:if="${user != null}">
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <span class="task-id-badge">Task ID: <span th:text="${user.id}"></span></span>
+                </div>
+
+                <div class="info-row">
+                    <div class="info-section">
+                        <div class="info-label">Priority Level</div>
+                        <div class="info-value" 
+                             th:class="${user.level == 'High'} ? 'info-value level-high' : (${user.level == 'Medium'} ? 'info-value level-medium' : 'info-value level-low')"
+                             th:text="${user.level}"></div>
+                    </div>
+                    <div class="info-section">
+                        <div class="info-label">Date</div>
+                        <div class="info-value" th:text="${user.date}"></div>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <div class="info-label">Brief Description</div>
+                    <div class="info-value" th:text="${user.description}"></div>
+                </div>
+
+                <div class="info-section">
+                    <div class="info-label">Person in Charge</div>
+                    <div class="info-value" th:text="${user.pic}"></div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="description-section" th:if="${user.descriptionDetail != null and user.descriptionDetail != ''}">
+                    <div class="info-label">Detailed Description</div>
+                    <div class="info-value" th:text="${user.descriptionDetail}"></div>
+                </div>
+
+                <div class="divider" th:if="${user.descriptionDetail != null and user.descriptionDetail != ''}"></div>
+
+                <div class="image-section">
+                    <div class="info-label" style="text-align: left; margin-bottom: 15px;">Task Image</div>
+                    <img th:if="${user.imagePath != null and user.imagePath != ''}" 
+                         class="task-image" 
+                         th:src="@{'/images/' + ${user.imagePath}}" 
+                         alt="Task Image">
+                    <div th:if="${user.imagePath == null or user.imagePath == ''}" class="no-image">
+                        No image uploaded for this task
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+            </div>
+
+            <div th:if="${user == null}">
+                <div class="no-image">
+                    Task not found
+                </div>
+            </div>
+
+            <a href="/users" class="btn-close">Close & Back to Task List</a>
+        </div>
+    </div>
+</body>
+</html>

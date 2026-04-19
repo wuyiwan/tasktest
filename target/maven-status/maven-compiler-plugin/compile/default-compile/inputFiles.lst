@@ -1,6 +1,8 @@
-D:\TaskManagementSystem\src\main\java\com\example\demo\contorller\UserContorller.java
-D:\TaskManagementSystem\src\main\java\com\example\demo\DemoApplication.java
-D:\TaskManagementSystem\src\main\java\com\example\demo\mappers\UserMapper.java
-D:\TaskManagementSystem\src\main\java\com\example\demo\service\UserService.java
-D:\TaskManagementSystem\src\main\java\com\example\demo\service\serviceimpl\UserServiceImpl.java
-D:\TaskManagementSystem\src\main\java\com\example\demo\pojo\User.java
+D:\tasktest\src\main\java\com\example\demo\config\DatabaseMigrationConfig.java
+D:\tasktest\src\main\java\com\example\demo\service\UserService.java
+D:\tasktest\src\main\java\com\example\demo\contorller\UserContorller.java
+D:\tasktest\src\main\java\com\example\demo\service\serviceimpl\UserServiceImpl.java
+D:\tasktest\src\main\java\com\example\demo\mappers\UserMapper.java
+D:\tasktest\src\main\java\com\example\demo\DemoApplication.java
+D:\tasktest\src\main\java\com\example\demo\pojo\User.java
+D:\tasktest\src\main\java\com\example\demo\config\WebMvcConfig.java
