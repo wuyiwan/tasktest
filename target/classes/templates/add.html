@@ -155,6 +155,53 @@
             content: ' *';
             color: #e74c3c;
         }
+
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            font-size: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            background-color: #fafafa;
+            color: #34495e;
+            resize: vertical;
+            min-height: 100px;
+            font-family: inherit;
+        }
+
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            background-color: white;
+            box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.1);
+        }
+
+        .form-group textarea::placeholder {
+            color: #95a5a6;
+        }
+
+        .form-group input[type="file"] {
+            padding: 12px;
+            border: 2px dashed #e0e0e0;
+            cursor: pointer;
+            background-color: #fafafa;
+        }
+
+        .form-group input[type="file"]:hover {
+            border-color: #3498db;
+        }
+
+        .form-group input[type="file"]:focus {
+            border-style: solid;
+        }
+
+        .image-preview {
+            margin-top: 10px;
+            max-width: 200px;
+            border-radius: 10px;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -165,10 +212,15 @@
                 <hr>
             </div>
 
-            <form action="AddUser" method="post" th:object="${user}">
-                <div class="form-group">
+            <form action="AddUser" method="post" enctype="multipart/form-data" th:object="${user}">
+                <div class="form-group" th:if="${user == null or user.id == null}">
+                    <label for="id">Task ID (Optional - auto-generated if empty)</label>
+                    <input type="text" id="id" name="id" th:field="*{id}" placeholder="Enter task ID (optional)">
+                </div>
+
+                <div class="form-group" th:if="${user != null and user.id != null}">
                     <label class="label-required" for="id">Task ID</label>
-                    <input type="text" id="id" name="id" th:field="*{id}" placeholder="Enter task ID" required>
+                    <input type="text" id="id" name="id" th:field="*{id}" placeholder="Enter task ID" readonly>
                 </div>
 
                 <div class="form-row">
@@ -183,13 +235,27 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="label-required" for="description">Description</label>
-                    <input type="text" id="description" name="description" th:field="*{description}" placeholder="Enter task description" required>
+                    <label class="label-required" for="description">Description (Short)</label>
+                    <input type="text" id="description" name="description" th:field="*{description}" placeholder="Enter brief task description" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="descriptionDetail">Task Description (Detail)</label>
+                    <textarea id="descriptionDetail" name="descriptionDetail" th:field="*{descriptionDetail}" placeholder="Enter detailed task description..."></textarea>
                 </div>
 
                 <div class="form-group">
                     <label class="label-required" for="pic">Person in Charge</label>
                     <input type="text" id="pic" name="pic" th:field="*{pic}" placeholder="Enter responsible person" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="imageFile">Upload Image</label>
+                    <input type="file" id="imageFile" name="imageFile" accept="image/*">
+                    <img id="imagePreview" class="image-preview" alt="Preview">
+                    <div th:if="${user != null and user.imagePath != null and user.imagePath != ''}" style="margin-top: 10px; color: #27ae60; font-size: 14px;">
+                        Current image uploaded
+                    </div>
                 </div>
 
                 <button type="submit" class="btn-submit">Submit</button>

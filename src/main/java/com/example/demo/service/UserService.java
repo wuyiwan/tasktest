@@ -8,9 +8,9 @@ import java.util.List;
 public interface UserService{
     List<User> getAll();
 
-    User getOne(String id);
+    User getOne(Integer id);
 
-    int remove(String id);
+    int remove(Integer id);
 
     int add(User user);
 
