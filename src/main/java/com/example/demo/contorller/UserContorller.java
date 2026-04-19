@@ -4,7 +4,6 @@ import com.example.demo.pojo.User;
 import com.example.demo.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomNumberEditor;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.NumberFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -30,13 +28,17 @@ public class UserContorller {
     public void initBinder(WebDataBinder binder) {
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
         
-        binder.registerCustomEditor(Integer.class, new CustomNumberEditor(Integer.class, NumberFormat.getInstance(), true) {
+        binder.registerCustomEditor(Integer.class, new java.beans.PropertyEditorSupport() {
             @Override
             public void setAsText(String text) throws IllegalArgumentException {
                 if (text == null || text.trim().isEmpty()) {
                     setValue(null);
-                } else {
-                    super.setAsText(text.trim());
+                    return;
+                }
+                try {
+                    setValue(Integer.parseInt(text.trim()));
+                } catch (NumberFormatException e) {
+                    setValue(null);
                 }
             }
         });
