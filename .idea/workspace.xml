@@ -5,18 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01784714-9333-4d2c-960d-f8143c2ad503" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/contorller/UserContorller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/contorller/UserContorller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mappers/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mappers/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/pojo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/pojo/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/task.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/task.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/users.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/users.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -349,16 +338,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Maven.demo [install].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/tasktest&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.demo [install].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "trae3",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/admin/Downloads/TaskManagementSystem-master/TaskManagementSystem-master",
+    "settings.editor.selected.configurable": "MavenSettings"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Maven.demo [install]">
     <configuration name="demo [install]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
       <MavenSettings>
