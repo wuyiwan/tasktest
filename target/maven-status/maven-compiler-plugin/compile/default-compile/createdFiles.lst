@@ -1,6 +1,0 @@
-com\example\demo\DemoApplication.class
-com\example\demo\service\UserService.class
-com\example\demo\pojo\User.class
-com\example\demo\mappers\UserMapper.class
-com\example\demo\contorller\UserContorller.class
-com\example\demo\service\serviceimpl\UserServiceImpl.class
