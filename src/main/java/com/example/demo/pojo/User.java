@@ -11,6 +11,10 @@ public class User {
 
     private String pic;
 
+    private String imagePath;
+
+    private String descriptionDetail;
+
     public String getPic() {
             return pic;
         }
@@ -18,6 +22,22 @@ public class User {
     public void setPic(String pic) {
             this.pic = pic;
         }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public String getDescriptionDetail() {
+        return descriptionDetail;
+    }
+
+    public void setDescriptionDetail(String descriptionDetail) {
+        this.descriptionDetail = descriptionDetail;
+    }
 
     public String getDescription() {
         return description;
@@ -59,6 +79,8 @@ public class User {
                 ", description='" + description + '\'' +
                 ", date='" + date + '\'' +
                 ", pic='" + pic + '\'' +
+                ", imagePath='" + imagePath + '\'' +
+                ", descriptionDetail='" + descriptionDetail + '\'' +
                 '}';
     }
 }
