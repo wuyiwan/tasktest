@@ -213,9 +213,14 @@
             </div>
 
             <form action="AddUser" method="post" enctype="multipart/form-data" th:object="${user}">
-                <div class="form-group">
+                <div class="form-group" th:if="${user == null or user.id == null}">
+                    <label for="id">Task ID (Optional - auto-generated if empty)</label>
+                    <input type="text" id="id" name="id" th:field="*{id}" placeholder="Enter task ID (optional)">
+                </div>
+
+                <div class="form-group" th:if="${user != null and user.id != null}">
                     <label class="label-required" for="id">Task ID</label>
-                    <input type="text" id="id" name="id" th:field="*{id}" placeholder="Enter task ID" required>
+                    <input type="text" id="id" name="id" th:field="*{id}" placeholder="Enter task ID" readonly>
                 </div>
 
                 <div class="form-row">

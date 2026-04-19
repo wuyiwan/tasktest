@@ -1,7 +1,7 @@
 package com.example.demo.pojo;
 
 public class User {
-    private String id;
+    private Integer id;
 
     private String level;
 
@@ -55,11 +55,11 @@ public class User {
         this.date = date;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

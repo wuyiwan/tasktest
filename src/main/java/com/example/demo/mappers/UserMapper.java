@@ -12,10 +12,10 @@ public interface UserMapper{
     List<User> selectAll();
 
     @Select("select id, level, description, date, pic, image_path as imagePath, description_detail as descriptionDetail from task where id = #{id}")
-    User select(String id);
+    User select(Integer id);
 
     @Delete("delete from task where id = #{id}")
-    int delete(String id);
+    int delete(Integer id);
 
     @Insert({ "insert into task(id, level, description, date, pic, image_path, description_detail) values(#{id}, #{level}, #{description}, #{date}, #{pic}, #{imagePath}, #{descriptionDetail})" })
     int insert(User user);

@@ -44,19 +44,19 @@ public class UserContorller {
 
     @GetMapping("/get/{id}")
     @ResponseBody
-    public User getOne(@PathVariable String id) {
+    public User getOne(@PathVariable Integer id) {
         return userService.getOne(id);
     }
 
     @GetMapping("/delete/{id}")
-    public String remove(@PathVariable String id) {
+    public String remove(@PathVariable Integer id) {
         userService.remove(id);
         return "redirect:/users";
     }
 
     @PostMapping("/delete")
     @ResponseBody
-    public int removeById(@RequestParam String id) {
+    public int removeById(@RequestParam Integer id) {
         return userService.remove(id);
     }
 
@@ -99,7 +99,7 @@ public class UserContorller {
     }
 
     @GetMapping("/update/{id}")
-    public String showUpdateForm(@PathVariable String id, Model model) {
+    public String showUpdateForm(@PathVariable Integer id, Model model) {
         User user = userService.getOne(id);
         model.addAttribute("user", user);
         return "add";
@@ -112,7 +112,7 @@ public class UserContorller {
     }
 
     @GetMapping("/detail/{id}")
-    public String showDetail(@PathVariable String id, Model model) {
+    public String showDetail(@PathVariable Integer id, Model model) {
         User user = userService.getOne(id);
         model.addAttribute("user", user);
         return "detail";

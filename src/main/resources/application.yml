@@ -1,6 +1,6 @@
 #jdbc
 server:
-  port: 8081
+  port: 8082
 spring:
   main:
     allow-bean-definition-overriding: true
