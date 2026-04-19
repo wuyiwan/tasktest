@@ -1,7 +1,7 @@
 package com.example.demo.pojo;
 
 public class User {
-    private String id;
+    private Integer id;
 
     private String level;
 
@@ -11,6 +11,10 @@ public class User {
 
     private String pic;
 
+    private String imagePath;
+
+    private String descriptionDetail;
+
     public String getPic() {
             return pic;
         }
@@ -18,6 +22,22 @@ public class User {
     public void setPic(String pic) {
             this.pic = pic;
         }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public String getDescriptionDetail() {
+        return descriptionDetail;
+    }
+
+    public void setDescriptionDetail(String descriptionDetail) {
+        this.descriptionDetail = descriptionDetail;
+    }
 
     public String getDescription() {
         return description;
@@ -35,11 +55,11 @@ public class User {
         this.date = date;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -59,6 +79,8 @@ public class User {
                 ", description='" + description + '\'' +
                 ", date='" + date + '\'' +
                 ", pic='" + pic + '\'' +
+                ", imagePath='" + imagePath + '\'' +
+                ", descriptionDetail='" + descriptionDetail + '\'' +
                 '}';
     }
 }

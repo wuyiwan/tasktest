@@ -19,12 +19,12 @@ public class UserServiceImpl implements UserService {
         return userMapper.selectAll();
     }
 
-    public User getOne(String id){
+    public User getOne(Integer id){
         return userMapper.select(id);
     }
 
     @Override
-    public int remove(String id) {
+    public int remove(Integer id) {
         return userMapper.delete(id);
     }
 

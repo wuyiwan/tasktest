@@ -147,6 +147,15 @@
             background: linear-gradient(135deg, #d35400, #a04000);
         }
 
+        .btn-blue {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+        }
+
+        .btn-blue:hover {
+            background: linear-gradient(135deg, #2980b9, #1f618d);
+        }
+
         .btn-add {
             display: block;
             width: 180px;
@@ -226,6 +235,7 @@
                         <td th:text="${user.date}"></td>
                         <td th:text="${user.pic}"></td>
                         <td>
+                            <a th:href="@{'/detail/'+${user.id}}" class="btn btn-blue">detail</a>
                             <a th:href="@{'/delete/'+${user.id}}" class="btn btn-orange">delete</a>
                             <a th:href="@{'/update/'+${user.id}}" class="btn btn-green">revise</a>
                         </td>
