@@ -88,6 +88,50 @@
             color: #95a5a6;
         }
 
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            font-size: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            background-color: #fafafa;
+            color: #34495e;
+            resize: vertical;
+            min-height: 100px;
+            font-family: inherit;
+        }
+
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            background-color: white;
+            box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.1);
+        }
+
+        .form-group textarea::placeholder {
+            color: #95a5a6;
+        }
+
+        .form-group input[type="file"] {
+            padding: 12px 15px;
+            background-color: #f8f9fa;
+            cursor: pointer;
+        }
+
+        .form-group input[type="file"]:hover {
+            background-color: #e9ecef;
+        }
+
+        .image-preview {
+            margin-top: 10px;
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 10px;
+            display: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
         .form-row {
             display: flex;
             gap: 20px;
@@ -165,7 +209,7 @@
                 <hr>
             </div>
 
-            <form action="AddUser" method="post" th:object="${user}">
+            <form action="AddUser" method="post" enctype="multipart/form-data" th:object="${user}">
                 <div class="form-group">
                     <label class="label-required" for="id">Task ID</label>
                     <input type="text" id="id" name="id" th:field="*{id}" placeholder="Enter task ID" required>
@@ -183,13 +227,24 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="label-required" for="description">Description</label>
-                    <input type="text" id="description" name="description" th:field="*{description}" placeholder="Enter task description" required>
+                    <label class="label-required" for="description">Title</label>
+                    <input type="text" id="description" name="description" th:field="*{description}" placeholder="Enter task title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="taskDescription">Task Description</label>
+                    <textarea id="taskDescription" name="taskDescription" th:field="*{taskDescription}" placeholder="Enter detailed task description..."></textarea>
                 </div>
 
                 <div class="form-group">
                     <label class="label-required" for="pic">Person in Charge</label>
                     <input type="text" id="pic" name="pic" th:field="*{pic}" placeholder="Enter responsible person" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="imageFile">Upload Image</label>
+                    <input type="file" id="imageFile" name="imageFile" accept="image/*">
+                    <img id="imagePreview" class="image-preview" alt="Image Preview">
                 </div>
 
                 <button type="submit" class="btn-submit">Submit</button>
@@ -198,5 +253,20 @@
             <a href="/users" class="btn-back">Back to Task List</a>
         </div>
     </div>
+
+    <script>
+        document.getElementById('imageFile').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById('imagePreview');
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
 </body>
 </html>

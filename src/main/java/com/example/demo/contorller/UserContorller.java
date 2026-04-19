@@ -7,9 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 public class UserContorller {
@@ -61,9 +65,53 @@ public class UserContorller {
     }
 
     @PostMapping("/AddUser")
-    public String addUser(@ModelAttribute User user) {
-        userService.add(user);
+    public String addUser(@ModelAttribute User user, 
+                         @RequestParam(value = "imageFile", required = false) MultipartFile imageFile) {
+        User existingUser = userService.getOne(user.getId());
+        
+        if (imageFile != null && !imageFile.isEmpty()) {
+            String imagePath = saveImage(imageFile);
+            user.setImagePath(imagePath);
+        } else if (existingUser != null) {
+            user.setImagePath(existingUser.getImagePath());
+        }
+        
+        if (existingUser != null) {
+            userService.modify(user);
+        } else {
+            userService.add(user);
+        }
         return "redirect:/users";
+    }
+
+    private String saveImage(MultipartFile file) {
+        String uploadDir = "D:\\image";
+        File dir = new File(uploadDir);
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+        
+        String originalFilename = file.getOriginalFilename();
+        String extension = originalFilename != null ? 
+            originalFilename.substring(originalFilename.lastIndexOf(".")) : ".jpg";
+        String newFilename = UUID.randomUUID().toString() + extension;
+        
+        File destFile = new File(dir, newFilename);
+        try {
+            file.transferTo(destFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+        
+        return newFilename;
+    }
+
+    @GetMapping("/detail/{id}")
+    public String showDetail(@PathVariable String id, Model model) {
+        User user = userService.getOne(id);
+        model.addAttribute("user", user);
+        return "detail";
     }
 
     @PostMapping("/add")

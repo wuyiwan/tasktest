@@ -11,6 +11,26 @@ public class User {
 
     private String pic;
 
+    private String imagePath;
+
+    private String taskDescription;
+
+    public String getTaskDescription() {
+        return taskDescription;
+    }
+
+    public void setTaskDescription(String taskDescription) {
+        this.taskDescription = taskDescription;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
     public String getPic() {
             return pic;
         }
@@ -59,6 +79,8 @@ public class User {
                 ", description='" + description + '\'' +
                 ", date='" + date + '\'' +
                 ", pic='" + pic + '\'' +
+                ", imagePath='" + imagePath + '\'' +
+                ", taskDescription='" + taskDescription + '\'' +
                 '}';
     }
 }
