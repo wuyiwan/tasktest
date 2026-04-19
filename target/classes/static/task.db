@@ -5,20 +5,22 @@ create table task
     level  varchar(20),
     description varchar(100),
     date varchar(11),
-    pic varchar(10)
+    pic varchar(10),
+    image_path varchar(255),
+    description_detail text
 );
 create index idindex on task(id);
-insert into task (id, level, description, date, pic)
-values (1,"normal", "event one", "2020/02/13", "A");
+insert into task (id, level, description, date, pic, image_path, description_detail)
+values (1,"normal", "event one", "2020/02/13", "A", null, "This is the first event description. It contains detailed information about the task.");
 
-insert into task (id, level, description, date, pic)
-values (2,"normal", "event two", "2020/02/16", "B");
+insert into task (id, level, description, date, pic, image_path, description_detail)
+values (2,"normal", "event two", "2020/02/16", "B", null, "This is the second event with additional details.");
 
-insert into task (id, level, description, date, pic)
-values (3,"urgent", "event three", "2020/03/01", "C");
+insert into task (id, level, description, date, pic, image_path, description_detail)
+values (3,"urgent", "event three", "2020/03/01", "C", null, "This is an urgent task that requires immediate attention.");
 
-insert into task (id, level, description, date, pic)
-values (4,"normal", "event four", "2020/03/11", "D");
+insert into task (id, level, description, date, pic, image_path, description_detail)
+values (4,"normal", "event four", "2020/03/11", "D", null, null);
 
-insert into task (id, level, description, date, pic)
-values (5,"normal", "event five", "2020/03/14", "E");
+insert into task (id, level, description, date, pic, image_path, description_detail)
+values (5,"normal", "event five", "2020/03/14", "E", null, null);
